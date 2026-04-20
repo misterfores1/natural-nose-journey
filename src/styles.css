@@ -62,26 +62,45 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.75rem;
+
+  /* Brand: black + premium gold + white (Dr. Hernán Bautista) */
+  --background: oklch(0.16 0.01 60);          /* deep near-black */
+  --foreground: oklch(0.97 0.01 80);          /* warm white */
+  --surface: oklch(0.21 0.012 60);            /* card surface */
+  --surface-2: oklch(0.26 0.014 60);          /* elevated surface */
+
+  --card: oklch(0.21 0.012 60);
+  --card-foreground: oklch(0.97 0.01 80);
+  --popover: oklch(0.21 0.012 60);
+  --popover-foreground: oklch(0.97 0.01 80);
+
+  --primary: oklch(0.82 0.14 78);             /* premium gold */
+  --primary-foreground: oklch(0.16 0.01 60);
+  --primary-glow: oklch(0.88 0.13 85);
+
+  --secondary: oklch(0.26 0.014 60);
+  --secondary-foreground: oklch(0.97 0.01 80);
+  --muted: oklch(0.24 0.012 60);
+  --muted-foreground: oklch(0.72 0.02 80);
+  --accent: oklch(0.82 0.14 78);
+  --accent-foreground: oklch(0.16 0.01 60);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.82 0.14 78 / 60%);
+
+  /* Gradients & shadows */
+  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.14 78), oklch(0.88 0.13 85));
+  --gradient-hero: radial-gradient(ellipse at 70% 30%, oklch(0.4 0.08 70 / 0.55), transparent 60%),
+                   radial-gradient(ellipse at 20% 80%, oklch(0.3 0.06 60 / 0.4), transparent 60%),
+                   linear-gradient(180deg, oklch(0.13 0.01 60), oklch(0.16 0.01 60));
+  --gradient-fade: linear-gradient(180deg, transparent, oklch(0.16 0.01 60));
+  --shadow-gold: 0 20px 60px -20px oklch(0.82 0.14 78 / 0.45);
+  --shadow-elegant: 0 30px 80px -30px oklch(0 0 0 / 0.6);
+
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -132,13 +151,64 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-primary-glow: var(--primary-glow);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
+
+  h1, h2, h3, h4 {
+    font-family: "Playfair Display", Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-gold { background-image: var(--gradient-gold); }
+  .bg-gradient-hero { background-image: var(--gradient-hero); }
+  .bg-gradient-fade { background-image: var(--gradient-fade); }
+  .text-gradient-gold {
+    background-image: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .gold-underline {
+    background-image: linear-gradient(transparent 65%, oklch(0.82 0.14 78 / 0.5) 65%);
+    background-repeat: no-repeat;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-fade-up {
+    animation: fadeUp 0.8s var(--transition-smooth) both;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
