@@ -67,7 +67,7 @@ export function LongForm() {
         👉 AGENDAR MI VALORACIÓN
       </button>
       <p className="mt-3 text-center text-xs text-muted-foreground">
-        Información protegida. Solo el equipo del Dr. Hernán Bautista accederá a tus datos.
+        Información protegida. Solo el equipo del Dr. Leonardo Carrillo accederá a tus datos.
       </p>
     </form>
   );
