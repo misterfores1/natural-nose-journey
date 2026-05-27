@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_URL =
   "https://wa.me/573000000000?text=" +
-  encodeURIComponent("Hola, ya vi la información sobre rinoplastia y quiero más detalles");
+  encodeURIComponent("Hola, ya vi la información sobre lipoescultura y quiero más detalles");
 
 function Index() {
   return (
@@ -26,13 +26,13 @@ function Index() {
       <header className="absolute left-0 right-0 top-0 z-30">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
           <a href="#top" className="font-serif text-lg tracking-wide sm:text-xl">
-            <span className="text-gradient-gold font-bold">Dr. Hernán Bautista</span>
+            <span className="text-gradient-gold font-bold">Dr. Leonardo Carrillo</span>
           </a>
           <a
             href="#agendar"
             className="hidden rounded-full border border-primary/40 px-5 py-2 text-sm font-medium text-primary transition hover:bg-primary hover:text-primary-foreground sm:inline-block"
           >
-            Agendar valoración
+            Agendar asesoría
           </a>
         </div>
       </header>
@@ -42,15 +42,16 @@ function Index() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-12 lg:gap-12 lg:pb-24 lg:pt-36">
           <div className="lg:col-span-7 animate-fade-up">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Rinoplastia ultrasónica
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Lipoescultura #La360º
             </span>
             <h1 className="font-serif text-4xl leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-              Resultados <span className="gold-underline">naturales</span> y una recuperación{" "}
-              <span className="text-gradient-gold">más llevadera</span>
+              La figura que siempre <span className="gold-underline">soñaste</span> con resultados{" "}
+              <span className="text-gradient-gold">naturales y armónicos</span>
             </h1>
             <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Valoración personalizada con el <strong className="text-foreground">Dr. Hernán Bautista</strong>{" "}
-              — cirujano plástico facial y otorrinolaringólogo. Tecnología avanzada y enfoque funcional.
+              Asesoría sin costo con el <strong className="text-foreground">Dr. Leonardo Carrillo</strong>{" "}
+              — cirujano plástico certificado, miembro activo de la Sociedad Colombiana de Cirugía
+              Plástica. Tecnología VASER + MicroAire + Renuvion.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -58,7 +59,7 @@ function Index() {
                 href="#candidato"
                 className="inline-flex items-center justify-center rounded-xl bg-gradient-gold px-7 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03]"
               >
-                👉 QUIERO SABER SI SOY CANDIDATO
+                👉 AGENDAR MI ASESORÍA GRATUITA
               </a>
               <a
                 href={WHATSAPP_URL}
@@ -71,9 +72,9 @@ function Index() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
-              <Trust>+10 años de experiencia</Trust>
-              <Trust>Tecnología ultrasónica</Trust>
-              <Trust>Enfoque estético + funcional</Trust>
+              <Trust>Miembro SCCP</Trust>
+              <Trust>Tecnología VASER + Renuvion</Trust>
+              <Trust>Formación internacional</Trust>
             </div>
           </div>
 
@@ -83,7 +84,7 @@ function Index() {
               <div className="relative overflow-hidden rounded-[2rem] border border-border shadow-elegant">
                 <VideoBlock
                   poster={doctorHero}
-                  caption="Conoce la técnica ultrasónica en 60 segundos"
+                  caption="Conoce la técnica Lipo 360º en 60 segundos"
                   label="Reproducir video introductorio"
                 />
               </div>
@@ -95,7 +96,7 @@ function Index() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold">Resultados naturales</p>
+                    <p className="text-sm font-semibold">Resultados armónicos</p>
                     <p className="text-xs text-muted-foreground">Verificados por pacientes</p>
                   </div>
                 </div>
@@ -111,14 +112,14 @@ function Index() {
           <div>
             <Eyebrow>Micro compromiso</Eyebrow>
             <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl">
-              Descubre si eres candidato en <span className="text-gradient-gold">menos de 1 minuto</span>
+              Descubre si eres candidata en <span className="text-gradient-gold">menos de 1 minuto</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Una evaluación inicial breve para entender tu caso y orientarte hacia la mejor opción
-              estética y funcional para tu nariz.
+              Una evaluación inicial breve para entender tu caso y orientarte hacia la mejor
+              alternativa de lipoescultura para tu cuerpo.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
-              <Bullet>Sin costo y sin compromiso</Bullet>
+              <Bullet>Asesoría sin costo y sin compromiso</Bullet>
               <Bullet>Respuesta en menos de 24 horas</Bullet>
               <Bullet>Atención directa del equipo médico</Bullet>
             </ul>
@@ -132,13 +133,13 @@ function Index() {
         <div className="mx-auto max-w-4xl text-center">
           <Eyebrow center>Historias reales</Eyebrow>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl">
-            Resultados reales, <span className="text-gradient-gold">decisiones informadas</span>
+            Pacientes felices, <span className="text-gradient-gold">transformaciones reales</span>
           </h2>
         </div>
         <div className="mx-auto mt-10 max-w-4xl">
           <VideoBlock
             poster={videoPoster1}
-            caption="Pacientes cuentan su experiencia con rinoplastia ultrasónica"
+            caption="Pacientes cuentan su experiencia con lipoescultura 360º"
             label="Reproducir testimonios"
           />
         </div>
@@ -147,9 +148,9 @@ function Index() {
       {/* 4. PRUEBA SOCIAL FUERTE */}
       <Section>
         <div className="mx-auto max-w-3xl text-center">
-          <Eyebrow center>Antes y después</Eyebrow>
+          <Eyebrow center>Casos de éxito</Eyebrow>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl">
-            Pacientes reales, <span className="text-gradient-gold">resultados naturales</span>
+            Pacientes reales, <span className="text-gradient-gold">resultados armónicos</span>
           </h2>
         </div>
 
@@ -157,26 +158,26 @@ function Index() {
           <div className="lg:col-span-3">
             <BeforeAfterCarousel
               slides={[
-                { src: beforeAfter1, alt: "Antes y después rinoplastia paciente 1" },
-                { src: beforeAfter2, alt: "Antes y después rinoplastia paciente 2" },
+                { src: beforeAfter1, alt: "Antes y después lipoescultura paciente 1" },
+                { src: beforeAfter2, alt: "Antes y después lipoescultura paciente 2" },
               ]}
             />
           </div>
           <div className="space-y-5 lg:col-span-2">
             <Testimonial
-              quote="Me veía diferente, pero sigo siendo yo."
-              author="María C."
-              location="Bogotá"
+              quote="Quedé encantada con mi nuevo cuerpo, amé los resultados, recomendadísimo mi doc."
+              author="Angie Lorenna"
+              location="@angielorennaoficial"
             />
             <Testimonial
-              quote="La recuperación fue mucho más llevadera de lo que imaginaba."
-              author="Andrés P."
-              location="Medellín"
+              quote="Si me preguntan si recomendaría al doctor, les diría que sin miedo se operen con él, es una persona muy profesional y nos deja hermosas."
+              author="Valentina Marín"
+              location="@valenmarin15"
             />
             <Testimonial
-              quote="El proceso fue claro de principio a fin. Me sentí acompañada."
-              author="Daniela R."
-              location="Cali"
+              quote="El mejor Doc, muy atento y profesional, mejoró mi figura espectacular."
+              author="Sara Blonde"
+              location="@sarablonde888"
             />
           </div>
         </div>
@@ -188,21 +189,21 @@ function Index() {
           <div>
             <Eyebrow>La diferencia</Eyebrow>
             <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl">
-              ¿Por qué <span className="text-gradient-gold">rinoplastia ultrasónica</span>?
+              ¿Por qué <span className="text-gradient-gold">Lipo 360º</span> con tecnología avanzada?
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Una evolución técnica que reemplaza martillos y cinceles tradicionales por ondas
-              ultrasónicas de alta precisión. El resultado: cirugías más finas, menos invasivas y
-              con una recuperación más amable.
+              Combinamos VASER (ondas ultrasónicas), MicroAire (succión asistida) y Renuvion
+              (retracción de piel) para esculpir cada zona en 360° con precisión, definición y una
+              recuperación más amable.
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { t: "Mayor precisión", d: "Esculpido milimétrico del hueso nasal." },
-              { t: "Menos trauma", d: "Respeto por los tejidos blandos circundantes." },
-              { t: "Menos inflamación", d: "Reducción significativa de moretones." },
-              { t: "Más natural", d: "Resultados armónicos con tu rostro." },
+              { t: "Definición 360°", d: "Esculpido completo: abdomen, cintura, espalda y flancos." },
+              { t: "Tecnología VASER", d: "Emulsión precisa de la grasa con menos trauma." },
+              { t: "Piel firme", d: "Renuvion ayuda a retraer y tensar la piel." },
+              { t: "Recuperación amable", d: "Menos moretones e inflamación postoperatoria." },
             ].map((b) => (
               <div
                 key={b.t}
@@ -229,7 +230,7 @@ function Index() {
               <div className="absolute -inset-4 rounded-[2rem] bg-gradient-gold opacity-25 blur-3xl" />
               <img
                 src={doctorHero}
-                alt="Dr. Hernán Bautista — Cirujano plástico facial"
+                alt="Dr. Leonardo Carrillo — Cirujano plástico"
                 width={1080}
                 height={1620}
                 loading="lazy"
@@ -243,18 +244,18 @@ function Index() {
               Tu cirugía en <span className="text-gradient-gold">manos expertas</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              El <strong className="text-foreground">Dr. Hernán Bautista</strong> es cirujano
-              plástico facial y otorrinolaringólogo, especializado en procedimientos que combinan
-              estética y función respiratoria.
+              El <strong className="text-foreground">Dr. Leonardo Carrillo</strong> es médico
+              cirujano de la Universidad Nacional de Bogotá, especializado en Cirugía Plástica,
+              Estética y Reconstructiva en Argentina.
             </p>
             <p className="mt-4 text-muted-foreground">
-              Cada caso se planifica de forma personalizada, buscando armonía facial y resultados
-              naturales que respeten tu identidad.
+              Realizó subespecialidades en Cirugía Craneofacial y Plástica Pediátrica en EE. UU. y
+              Microcirugía en Taiwán. Miembro activo de la Sociedad Colombiana de Cirugía Plástica.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-4">
               {[
                 { n: "+10", l: "Años de experiencia" },
-                { n: "1.500+", l: "Casos realizados" },
+                { n: "2.000+", l: "Casos realizados" },
                 { n: "98%", l: "Satisfacción" },
               ].map((s) => (
                 <div key={s.l} className="rounded-2xl border border-border bg-surface p-4 text-center">
@@ -277,13 +278,13 @@ function Index() {
             Toma la decisión con <span className="text-gradient-gold">confianza</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Mira este último video antes de agendar tu valoración personalizada.
+            Mira este último video antes de agendar tu asesoría gratuita.
           </p>
         </div>
         <div className="mx-auto mt-10 max-w-4xl">
           <VideoBlock
             poster={videoPoster3}
-            caption="Un mensaje del Dr. Hernán Bautista para ti"
+            caption="Un mensaje del Dr. Leonardo Carrillo para ti"
             label="Reproducir mensaje del doctor"
           />
         </div>
@@ -294,10 +295,10 @@ function Index() {
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow center>Agenda</Eyebrow>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl">
-            Agenda tu <span className="text-gradient-gold">valoración personalizada</span>
+            Agenda tu <span className="text-gradient-gold">asesoría gratuita</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Cuéntanos un poco más sobre ti y nuestro equipo te contactará para coordinar tu cita.
+            Completa el formulario con tus datos y nos pondremos en contacto contigo.
           </p>
         </div>
         <div className="mx-auto mt-10 max-w-3xl">
@@ -314,7 +315,7 @@ function Index() {
             </svg>
           </div>
           <p className="font-serif text-xl sm:text-2xl">
-            Para garantizar resultados de alta calidad, los <span className="text-gradient-gold">cupos quirúrgicos son limitados</span> cada mes.
+            Solo quedan <span className="text-gradient-gold">7 cupos quirúrgicos disponibles</span> esta semana.
           </p>
         </div>
       </Section>
@@ -342,7 +343,7 @@ function Index() {
             👉 HABLAR POR WHATSAPP
           </a>
           <p className="mt-4 text-xs italic text-muted-foreground">
-            Mensaje automático: “Hola, ya vi la información sobre rinoplastia y quiero más detalles”
+            Mensaje automático: “Hola, ya vi la información sobre lipoescultura y quiero más detalles”
           </p>
         </div>
       </Section>
@@ -351,14 +352,14 @@ function Index() {
       <Section dark>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-serif text-3xl sm:text-4xl">
-            Tu <span className="text-gradient-gold">tranquilidad</span> es nuestra prioridad
+            Tu <span className="text-gradient-gold">transformación</span> en manos seguras
           </h2>
         </div>
         <div className="mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             "Atención personalizada",
-            "Tecnología avanzada",
-            "Enfoque natural y funcional",
+            "Tecnología VASER + Renuvion",
+            "Resultados naturales y armónicos",
             "Acompañamiento en todo el proceso",
           ].map((t) => (
             <div
@@ -379,9 +380,9 @@ function Index() {
       {/* FOOTER */}
       <footer className="border-t border-border bg-surface py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-sm text-muted-foreground sm:flex-row sm:px-8">
-          <p className="font-serif text-base text-foreground">Dr. Hernán Bautista</p>
+          <p className="font-serif text-base text-foreground">Dr. Leonardo Carrillo</p>
           <p>© {new Date().getFullYear()} Todos los derechos reservados.</p>
-          <p className="text-xs">Cirujano plástico facial · Otorrinolaringólogo</p>
+          <p className="text-xs">Cirujano plástico · Miembro SCCP</p>
         </div>
       </footer>
 
