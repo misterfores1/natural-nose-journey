@@ -192,7 +192,7 @@
   .shadow-gold { box-shadow: var(--shadow-gold); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
   .gold-underline {
-    background-image: linear-gradient(transparent 65%, oklch(0.82 0.14 78 / 0.5) 65%);
+    background-image: linear-gradient(transparent 65%, oklch(0.62 0.22 250 / 0.45) 65%);
     background-repeat: no-repeat;
   }
   .animate-float {
