@@ -1,6 +1,6 @@
 const WHATSAPP_URL =
   "https://wa.me/573000000000?text=" +
-  encodeURIComponent("Hola, ya vi la información sobre rinoplastia y quiero más detalles");
+  encodeURIComponent("Hola, ya vi la información sobre lipoescultura y quiero más detalles");
 
 export function StickyCTA() {
   return (

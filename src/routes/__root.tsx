@@ -29,17 +29,17 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Rinoplastia Ultrasónica | Dr. Hernán Bautista" },
+      { title: "Lipoescultura 360º | Dr. Leonardo Carrillo" },
       {
         name: "description",
         content:
-          "Rinoplastia ultrasónica con resultados naturales y recuperación más llevadera. Valoración personalizada con el Dr. Hernán Bautista — cirujano plástico facial y otorrinolaringólogo.",
+          "Lipoescultura 360º con resultados naturales y armónicos. Asesoría gratuita con el Dr. Leonardo Carrillo — cirujano plástico, miembro de la Sociedad Colombiana de Cirugía Plástica.",
       },
-      { name: "author", content: "Dr. Hernán Bautista" },
-      { property: "og:title", content: "Rinoplastia Ultrasónica | Dr. Hernán Bautista" },
+      { name: "author", content: "Dr. Leonardo Carrillo" },
+      { property: "og:title", content: "Lipoescultura 360º | Dr. Leonardo Carrillo" },
       {
         property: "og:description",
-        content: "Resultados naturales y recuperación llevadera. Agenda tu valoración personalizada.",
+        content: "Resultados armónicos con tecnología VASER + Renuvion. Agenda tu asesoría gratuita.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
