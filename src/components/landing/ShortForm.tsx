@@ -1,71 +1,68 @@
 import { useState } from "react";
 
-type Question = {
-  id: string;
-  label: string;
-  options: { label: string; score: number }[];
-};
+type Option = { emoji: string; label: string; score: number };
+type Question = { id: string; label: string; options: Option[] };
 
 const QUESTIONS: Question[] = [
   {
     id: "edad",
     label: "¿Cuál es tu rango de edad?",
     options: [
-      { label: "Menos de 18", score: 0 },
-      { label: "18 – 30", score: 3 },
-      { label: "31 – 45", score: 3 },
-      { label: "46 – 60", score: 2 },
-      { label: "Más de 60", score: 1 },
+      { emoji: "🙋‍♀️", label: "Menos de 18", score: 0 },
+      { emoji: "✨", label: "18 – 30", score: 3 },
+      { emoji: "💪", label: "31 – 45", score: 3 },
+      { emoji: "🌸", label: "46 – 60", score: 2 },
+      { emoji: "🌟", label: "Más de 60", score: 1 },
     ],
   },
   {
     id: "imc",
     label: "¿Cómo describirías tu peso actual?",
     options: [
-      { label: "Estoy en mi peso ideal", score: 3 },
-      { label: "Tengo entre 5 y 10 kg de más", score: 3 },
-      { label: "Tengo más de 10 kg de más", score: 1 },
-      { label: "Estoy por debajo de mi peso", score: 1 },
+      { emoji: "✅", label: "Estoy en mi peso ideal", score: 3 },
+      { emoji: "⚖️", label: "Tengo entre 5 y 10 kg de más", score: 3 },
+      { emoji: "📈", label: "Tengo más de 10 kg de más", score: 1 },
+      { emoji: "📉", label: "Estoy por debajo de mi peso", score: 1 },
     ],
   },
   {
     id: "zonas",
     label: "¿Qué zonas te gustaría esculpir?",
     options: [
-      { label: "Abdomen y cintura", score: 3 },
-      { label: "Espalda y flancos", score: 3 },
-      { label: "Brazos o piernas", score: 2 },
-      { label: "Todo el cuerpo (360°)", score: 3 },
+      { emoji: "🎯", label: "Abdomen y cintura", score: 3 },
+      { emoji: "🔥", label: "Espalda y flancos", score: 3 },
+      { emoji: "💪", label: "Brazos o piernas", score: 2 },
+      { emoji: "🌀", label: "Todo el cuerpo (360°)", score: 3 },
     ],
   },
   {
     id: "salud",
     label: "¿Tienes alguna condición médica relevante?",
     options: [
-      { label: "Ninguna, estoy sana", score: 3 },
-      { label: "Controlada con tratamiento", score: 2 },
-      { label: "Sí, sin tratamiento", score: 1 },
-      { label: "Prefiero consultarlo en la asesoría", score: 2 },
+      { emoji: "💚", label: "Ninguna, estoy sana", score: 3 },
+      { emoji: "🩺", label: "Controlada con tratamiento", score: 2 },
+      { emoji: "⚠️", label: "Sí, sin tratamiento", score: 1 },
+      { emoji: "🤔", label: "Prefiero consultarlo en la asesoría", score: 2 },
     ],
   },
   {
     id: "expectativa",
     label: "¿Qué esperas del resultado?",
     options: [
-      { label: "Una figura natural y armónica", score: 3 },
-      { label: "Definición marcada estilo fitness", score: 3 },
-      { label: "Cambio radical de mi cuerpo", score: 1 },
-      { label: "Aún no lo tengo claro", score: 2 },
+      { emoji: "🌿", label: "Una figura natural y armónica", score: 3 },
+      { emoji: "🏋️‍♀️", label: "Definición marcada estilo fitness", score: 3 },
+      { emoji: "💥", label: "Cambio radical de mi cuerpo", score: 1 },
+      { emoji: "🤷‍♀️", label: "Aún no lo tengo claro", score: 2 },
     ],
   },
   {
     id: "tiempo",
     label: "¿Cuándo te gustaría realizar tu cirugía?",
     options: [
-      { label: "Lo antes posible", score: 3 },
-      { label: "En los próximos 3 meses", score: 3 },
-      { label: "En 6 meses o más", score: 2 },
-      { label: "Solo estoy investigando", score: 1 },
+      { emoji: "🚀", label: "Lo antes posible", score: 3 },
+      { emoji: "📅", label: "En los próximos 3 meses", score: 3 },
+      { emoji: "🗓️", label: "En 6 meses o más", score: 2 },
+      { emoji: "🔍", label: "Solo estoy investigando", score: 1 },
     ],
   },
 ];
@@ -73,14 +70,28 @@ const QUESTIONS: Question[] = [
 const MAX = QUESTIONS.length * 3;
 
 export function ShortForm() {
+  const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const allAnswered = QUESTIONS.every((q) => answers[q.id] !== undefined);
+  const total = QUESTIONS.length;
+  const isLast = step === total - 1;
+  const current = QUESTIONS[step];
+  const progress = Math.round(((step + (submitted ? 1 : 0)) / total) * 100);
+
   const score = Object.values(answers).reduce((a, b) => a + b, 0);
   const percent = Math.round((score / MAX) * 100);
-
   const verdict = getVerdict(percent);
+
+  const handleSelect = (score: number) => {
+    const next = { ...answers, [current.id]: score };
+    setAnswers(next);
+    if (isLast) {
+      setSubmitted(true);
+    } else {
+      setTimeout(() => setStep((s) => s + 1), 180);
+    }
+  };
 
   if (submitted) {
     return (
@@ -119,6 +130,7 @@ export function ShortForm() {
             onClick={() => {
               setSubmitted(false);
               setAnswers({});
+              setStep(0);
             }}
             className="mt-3 block w-full text-xs text-muted-foreground underline-offset-4 hover:underline"
           >
@@ -130,74 +142,55 @@ export function ShortForm() {
   }
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (allAnswered) setSubmitted(true);
-      }}
-      className="rounded-2xl border border-border bg-surface p-6 shadow-elegant sm:p-8"
-    >
-      <div className="mb-5 flex items-center justify-between text-xs text-muted-foreground">
-        <span>Test rápido</span>
+    <div className="rounded-2xl border border-border bg-surface p-6 shadow-elegant sm:p-8">
+      <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
         <span>
-          {Object.keys(answers).length} / {QUESTIONS.length}
+          Pregunta <span className="font-semibold text-foreground">{step + 1}</span> de {total}
         </span>
+        <span>{progress}%</span>
+      </div>
+      <div className="mb-6 h-1.5 w-full overflow-hidden rounded-full bg-background/60">
+        <div
+          className="h-full rounded-full bg-gradient-gold transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        />
       </div>
 
-      <div className="space-y-6">
-        {QUESTIONS.map((q, i) => (
-          <fieldset key={q.id}>
-            <legend className="mb-2 block text-sm font-medium text-foreground/90">
-              <span className="text-primary">{i + 1}.</span> {q.label}
-            </legend>
-            <div className="grid gap-2 sm:grid-cols-2">
-              {q.options.map((opt) => {
-                const selected = answers[q.id] === opt.score;
-                return (
-                  <label
-                    key={opt.label}
-                    className={`flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2.5 text-sm transition ${
-                      selected
-                        ? "border-primary bg-primary/10 text-foreground"
-                        : "border-border bg-background/40 text-foreground/80 hover:border-primary/40"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name={q.id}
-                      className="sr-only"
-                      checked={selected}
-                      onChange={() => setAnswers({ ...answers, [q.id]: opt.score })}
-                    />
-                    <span
-                      className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${
-                        selected ? "border-primary bg-primary" : "border-border"
-                      }`}
-                    >
-                      {selected && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground" />
-                      )}
-                    </span>
-                    {opt.label}
-                  </label>
-                );
-              })}
-            </div>
-          </fieldset>
-        ))}
+      <h3 className="font-serif text-xl leading-snug sm:text-2xl">{current.label}</h3>
+
+      <div className="mt-5 grid gap-2.5">
+        {current.options.map((opt) => {
+          const selected = answers[current.id] === opt.score;
+          return (
+            <button
+              key={opt.label}
+              type="button"
+              onClick={() => handleSelect(opt.score)}
+              className={`flex items-center gap-3 rounded-xl border px-4 py-3.5 text-left text-sm transition ${
+                selected
+                  ? "border-primary bg-primary/10 text-foreground"
+                  : "border-border bg-background/40 text-foreground/85 hover:border-primary/40 hover:bg-background/60"
+              }`}
+            >
+              <span className="text-xl">{opt.emoji}</span>
+              <span className="flex-1">{opt.label}</span>
+            </button>
+          );
+        })}
       </div>
 
-      <button
-        type="submit"
-        disabled={!allAnswered}
-        className="mt-6 w-full rounded-xl bg-gradient-gold px-6 py-4 text-base font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
-      >
-        👉 VER MI PUNTAJE
-      </button>
-      <p className="mt-3 text-center text-xs text-muted-foreground">
-        Tus respuestas son confidenciales y solo se usan para orientar tu asesoría.
-      </p>
-    </form>
+      <div className="mt-6 flex items-center justify-between text-xs text-muted-foreground">
+        <button
+          type="button"
+          disabled={step === 0}
+          onClick={() => setStep((s) => Math.max(0, s - 1))}
+          className="inline-flex items-center gap-1 rounded-lg px-2 py-1 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          ← Atrás
+        </button>
+        <span>Selecciona una opción para continuar</span>
+      </div>
+    </div>
   );
 }
 
