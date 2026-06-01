@@ -147,32 +147,3 @@ export function ShortForm() {
     </div>
   );
 }
-
-function getVerdict(percent: number) {
-  if (percent >= 80) {
-    return {
-      title: "Eres candidata ideal 🎯",
-      message:
-        "Tu perfil es altamente compatible con la Lipoescultura 360º. Agenda tu asesoría gratuita y diseñemos juntos tu plan personalizado.",
-    };
-  }
-  if (percent >= 60) {
-    return {
-      title: "Muy buena candidata ✨",
-      message:
-        "Tienes un perfil favorable. Con una valoración personalizada podemos confirmar la mejor técnica para ti.",
-    };
-  }
-  if (percent >= 40) {
-    return {
-      title: "Candidata con consideraciones",
-      message:
-        "Hay aspectos a evaluar a profundidad. Una asesoría con el Dr. Leonardo Carrillo es el siguiente paso para definir tu mejor alternativa.",
-    };
-  }
-  return {
-    title: "Necesitamos conocerte mejor",
-    message:
-      "Antes de avanzar es importante una valoración médica completa. Agenda tu asesoría gratuita y te orientamos sin compromiso.",
-  };
-}
