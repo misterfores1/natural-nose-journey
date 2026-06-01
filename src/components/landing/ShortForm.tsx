@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 
 type Option = { emoji: string; label: string; score: number };
 type Question = { id: string; label: string; options: Option[] };
@@ -70,76 +71,29 @@ const QUESTIONS: Question[] = [
 const MAX = QUESTIONS.length * 3;
 
 export function ShortForm() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
-  const [submitted, setSubmitted] = useState(false);
 
   const total = QUESTIONS.length;
   const isLast = step === total - 1;
   const current = QUESTIONS[step];
-  const progress = Math.round(((step + (submitted ? 1 : 0)) / total) * 100);
-
-  const score = Object.values(answers).reduce((a, b) => a + b, 0);
-  const percent = Math.round((score / MAX) * 100);
-  const verdict = getVerdict(percent);
+  const progress = Math.round((step / total) * 100);
 
   const handleSelect = (score: number) => {
     const next = { ...answers, [current.id]: score };
     setAnswers(next);
     if (isLast) {
-      setSubmitted(true);
+      const total = Object.values(next).reduce((a, b) => a + b, 0);
+      const percent = Math.round((total / MAX) * 100);
+      try {
+        sessionStorage.setItem("quiz_percent", String(percent));
+      } catch {}
+      navigate({ to: "/gracias" });
     } else {
       setTimeout(() => setStep((s) => s + 1), 180);
     }
   };
-
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-primary/30 bg-surface p-8 shadow-elegant">
-        <div className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
-            Tu resultado
-          </span>
-          <div className="mt-5 text-gradient-gold font-serif text-5xl font-bold sm:text-6xl">
-            {percent}%
-          </div>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {score} / {MAX} puntos de compatibilidad
-          </p>
-
-          <div className="mx-auto mt-5 h-2.5 w-full max-w-sm overflow-hidden rounded-full bg-background/60">
-            <div
-              className="h-full rounded-full bg-gradient-gold transition-all"
-              style={{ width: `${percent}%` }}
-            />
-          </div>
-
-          <h3 className="mt-6 font-serif text-2xl sm:text-3xl">{verdict.title}</h3>
-          <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-            {verdict.message}
-          </p>
-
-          <a
-            href="#agendar"
-            className="mt-6 inline-flex items-center justify-center rounded-xl bg-gradient-gold px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.03] sm:text-base"
-          >
-            👉 Agendar mi asesoría gratuita
-          </a>
-          <button
-            type="button"
-            onClick={() => {
-              setSubmitted(false);
-              setAnswers({});
-              setStep(0);
-            }}
-            className="mt-3 block w-full text-xs text-muted-foreground underline-offset-4 hover:underline"
-          >
-            Volver a responder
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="rounded-2xl border border-border bg-surface p-6 shadow-elegant sm:p-8">
@@ -192,33 +146,4 @@ export function ShortForm() {
       </div>
     </div>
   );
-}
-
-function getVerdict(percent: number) {
-  if (percent >= 80) {
-    return {
-      title: "Eres candidata ideal 🎯",
-      message:
-        "Tu perfil es altamente compatible con la Lipoescultura 360º. Agenda tu asesoría gratuita y diseñemos juntos tu plan personalizado.",
-    };
-  }
-  if (percent >= 60) {
-    return {
-      title: "Muy buena candidata ✨",
-      message:
-        "Tienes un perfil favorable. Con una valoración personalizada podemos confirmar la mejor técnica para ti.",
-    };
-  }
-  if (percent >= 40) {
-    return {
-      title: "Candidata con consideraciones",
-      message:
-        "Hay aspectos a evaluar a profundidad. Una asesoría con el Dr. Leonardo Carrillo es el siguiente paso para definir tu mejor alternativa.",
-    };
-  }
-  return {
-    title: "Necesitamos conocerte mejor",
-    message:
-      "Antes de avanzar es importante una valoración médica completa. Agenda tu asesoría gratuita y te orientamos sin compromiso.",
-  };
 }
