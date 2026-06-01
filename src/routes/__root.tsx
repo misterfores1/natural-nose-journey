@@ -29,20 +29,26 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lipoescultura 360º | Dr. Leonardo Carrillo" },
+      { title: "Lipo" },
       {
         name: "description",
         content:
           "Lipoescultura 360º con resultados naturales y armónicos. Asesoría gratuita con el Dr. Leonardo Carrillo — cirujano plástico, miembro de la Sociedad Colombiana de Cirugía Plástica.",
       },
       { name: "author", content: "Dr. Leonardo Carrillo" },
-      { property: "og:title", content: "Lipoescultura 360º | Dr. Leonardo Carrillo" },
+      { property: "og:title", content: "Lipo" },
       {
         property: "og:description",
         content: "Resultados armónicos con tecnología VASER + Renuvion. Agenda tu asesoría gratuita.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Lipo" },
+      { name: "description", content: "Natural Nose Journey offers ultrasonic rhinoplasty for natural results and easier recovery." },
+      { property: "og:description", content: "Natural Nose Journey offers ultrasonic rhinoplasty for natural results and easier recovery." },
+      { name: "twitter:description", content: "Natural Nose Journey offers ultrasonic rhinoplasty for natural results and easier recovery." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/77a9bf67-01d3-4b0c-9f3d-a3d84a680802/id-preview-454cf8df--2c159a47-f6f8-4c7b-b314-b26b501594ad.lovable.app-1780349654796.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/77a9bf67-01d3-4b0c-9f3d-a3d84a680802/id-preview-454cf8df--2c159a47-f6f8-4c7b-b314-b26b501594ad.lovable.app-1780349654796.png" },
     ],
     links: [
       {
